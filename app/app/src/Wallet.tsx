@@ -12,6 +12,8 @@ import {
 } from '@solana/wallet-adapter-react-ui';
 import { clusterApiUrl } from '@solana/web3.js';
 import dynamic from 'next/dynamic';
+import { UnsafeBurnerWalletAdapter } from '@solana/wallet-adapter-wallets';
+import { SolflareWalletAdapter, PhantomWalletAdapter, GlowWalletAdapter, BackpackWalletAdapter } from '@solana/wallet-adapter-wallets';
 
 // Default styles that can be overridden by your app
 require('@solana/wallet-adapter-react-ui/styles.css');
@@ -34,7 +36,10 @@ export const Wallet: FC<Props> = ({children}) => {
 
     const wallets = useMemo(
         () => [
-			//new PhantomWalletAdapter(),
+			new PhantomWalletAdapter(),
+			new SolflareWalletAdapter(),
+			new GlowWalletAdapter(),
+			new BackpackWalletAdapter(),
         ],
         // eslint-disable-next-line react-hooks/exhaustive-deps
         [network]
