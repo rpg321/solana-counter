@@ -5,6 +5,7 @@ import * as anchor from "@project-serum/anchor";
 import idl from "./src/idl/solana_counter.json";
 import { useWallet, useAnchorWallet } from "@solana/wallet-adapter-react";
 import * as web3 from "@solana/web3.js";
+import { get } from "http";
 
 export default function Home() {
 	const [theCount, setTheCount] = useState(0);
@@ -37,7 +38,7 @@ export default function Home() {
 	
 	useEffect(() => {
 		getUserCount();
-		//console.log('ran from use effect');
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [publicKey]);
 
 	async function storeCount(){
