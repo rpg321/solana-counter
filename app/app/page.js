@@ -22,7 +22,7 @@ export default function Home() {
 		}
 	};
 
-	const wallet = useAnchorWallet();
+	const wallet = useWallet();
 	const { publicKey } = useWallet();
 	const programID = new web3.PublicKey(
 		"2hiG8UasvmG2VFUxGWFDbVWwY6MjJ58vdEsVoPUS11pv"
