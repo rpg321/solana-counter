@@ -1,0 +1,57 @@
+{
+  "version": "0.1.0",
+  "name": "solana_counter",
+  "instructions": [
+    {
+      "name": "storeCount",
+      "accounts": [
+        {
+          "name": "count",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "user",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "theCount",
+          "type": "i32"
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "Count",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "user",
+            "type": "publicKey"
+          },
+          {
+            "name": "theCount",
+            "type": "i32"
+          },
+          {
+            "name": "timestamp",
+            "type": "i64"
+          }
+        ]
+      }
+    }
+  ],
+  "metadata": {
+    "address": "2hiG8UasvmG2VFUxGWFDbVWwY6MjJ58vdEsVoPUS11pv"
+  }
+}
