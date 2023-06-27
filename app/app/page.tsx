@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import * as anchor from "@project-serum/anchor";
 import idl from "./src/idl/solana_counter.json";
-import { useWallet } from "@solana/wallet-adapter-react";
+import { useWallet, useAnchorWallet } from "@solana/wallet-adapter-react";
 import * as web3 from "@solana/web3.js";
 
 export default function Home() {
@@ -22,15 +22,18 @@ export default function Home() {
 		}
 	};
 
-	const wallet = useWallet();
+	const wallet = useAnchorWallet();
 	const { publicKey } = useWallet();
 	const programID = new web3.PublicKey("2hiG8UasvmG2VFUxGWFDbVWwY6MjJ58vdEsVoPUS11pv");
 
 	const connection = new web3.Connection("https://api.devnet.solana.com");
 	const options = anchor.AnchorProvider.defaultOptions();
 
+	const idl_unformatted = JSON.stringify(idl);
+   const idl_formatted = JSON.parse(idl_unformatted);
+
 	const provider = new anchor.AnchorProvider(connection, wallet, options);
-	const countProgram = new anchor.Program(idl, programID, provider);
+	const countProgram = new anchor.Program(idl_formatted, programID, provider);
 	
 	useEffect(() => {
 		getUserCount();
